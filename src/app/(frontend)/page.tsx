@@ -10,9 +10,9 @@ import { homepagePosts } from '@/app/content/posts'
 import { buildMetadata } from '@/app/lib/seo'
 
 export const metadata: Metadata = buildMetadata({
-  title: '۲رگ — هوش مصنوعی کاربردی برای کسب‌وکار',
+  title: '۲رگ | ساخت راه‌حل‌های هوش مصنوعی برای کسب‌وکار',
   description:
-    'ما سیستم‌های هوش مصنوعی می‌سازیم که به تیم‌ها کمک می‌کنند جست‌وجو کنند، پاسخ بدهند، اتوماتیک کار کنند و هوشمندتر تصمیم بگیرند.',
+    '۲رگ استودیوی طراحی و توسعه راه‌حل‌های AI، RAG، ایجنت‌های هوشمند و اتوماسیون برای کسب‌وکارهایی است که می‌خواهند هوش مصنوعی را به نتیجه واقعی تبدیل کنند.',
   path: '/',
   absoluteTitle: true,
 })
