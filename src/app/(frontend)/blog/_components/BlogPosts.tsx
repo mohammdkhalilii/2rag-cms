@@ -6,6 +6,8 @@ import { ArrowUpLeft } from 'lucide-react'
 
 import { Section } from '@/app/components/site/Section'
 
+import Image from 'next/image'
+
 // import { blogCategories, featuredPost, posts } from '@/app/content/posts'
 
 export type BlogPost = {
@@ -17,8 +19,10 @@ export type BlogPost = {
   date: string // formatted publish date
   read: string // reading time, e.g. "3 min"
   // add any other fields you need (featured image, etc.)
+  coverImage?: string | null
+  coverImageAlt?: string | null
 }
-
+// NEED UPDATE
 type BlogPostsProps = {
   posts: BlogPost[]
   featuredPost: BlogPost
@@ -36,13 +40,25 @@ export function BlogPosts({ posts, featuredPost, categories }: BlogPostsProps) {
         className="pixel-frame group relative grid overflow-hidden border border-foreground bg-card md:grid-cols-12"
       >
         <div className="relative aspect-[5/4] md:col-span-5 md:aspect-auto">
+          {featuredPost.coverImage && (
+            <div className="relative mb-8 w-full h-full overflow-hidden  border border-border bg-muted">
+              <Image
+                src={featuredPost.coverImage}
+                alt={featuredPost.coverImageAlt || featuredPost.title}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 900px"
+                className="object-cover"
+              />
+            </div>
+          )}
           <div className="absolute inset-0 bg-pixels opacity-100" />
           <div className="absolute inset-0 bg-gradient-to-br from-accent/30 via-transparent to-[oklch(0.55_0.18_250)]/20" />
           <div className="absolute bottom-4 right-4 inline-flex items-center gap-2 border border-foreground bg-background px-2 py-1 font-mono text-xs uppercase tracking-widest">
             <span className="h-2 w-2 bg-accent" /> منتخب
           </div>
         </div>
-        <div className="flex flex-col justify-between p-8 md:col-span-7 md:p-12">
+        <div className="flex flex-col justify-between p-4 md:col-span-7 md:p-12">
           <div>
             <div className="font-mono text-xs uppercase tracking-widest text-accent">
               {featuredPost.cat}
@@ -88,8 +104,19 @@ export function BlogPosts({ posts, featuredPost, categories }: BlogPostsProps) {
             key={post.slug}
             id={post.slug}
             href={`/blog/${post.slug}`}
-            className="group flex aspect-[5/4] flex-col justify-between bg-card p-6 transition hover:bg-muted"
+            className="group flex aspect-[5/4] flex-col justify-between bg-card p-4 transition hover:bg-muted"
           >
+            {post.coverImage && (
+              <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-sm border border-border bg-muted">
+                <Image
+                  src={post.coverImage}
+                  alt={post.coverImageAlt || post.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 420px"
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
+            )}
             <div className="font-mono text-xs uppercase tracking-widest text-accent">
               {post.cat}
             </div>

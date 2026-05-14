@@ -210,6 +210,9 @@ export interface Post {
   publishedAt: string;
   featured?: boolean | null;
   coverImage?: (number | null) | Media;
+  /**
+   * Write the blog post in Markdown. Supports headings, links, lists, code blocks, images, and tables.
+   */
   content: string;
   seo?: {
     metaTitle?: string | null;

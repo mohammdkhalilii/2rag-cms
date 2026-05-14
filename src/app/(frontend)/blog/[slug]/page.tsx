@@ -6,12 +6,14 @@ import { ArrowUpLeft, CalendarDays, Clock3 } from 'lucide-react'
 import { CtaBlock } from '@/app/components/site/CtaBlock'
 import { Section } from '@/app/components/site/Section'
 // import { posts, type Post } from '@/app/content/posts'
-import { RichTextRenderer } from '@/app/components/ui/RichTextRenderer'
-
+import { MarkdownRenderer } from '@/app/components/ui/MarkdownRenderer'
 import { getPostBySlug, getPublishedPosts } from '@/app/lib/cms/posts'
 
 import { site } from '@/app/content/site'
 import { buildMetadata, serializeJsonLd } from '@/app/lib/seo'
+
+import Image from 'next/image'
+import { getMediaAlt, getMediaUrl } from '@/app/lib/cms/media'
 
 type BlogPostPageProps = {
   params: Promise<{
@@ -76,6 +78,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = await getPostBySlug(slug)
 
+  const coverImage = getMediaUrl(post.coverImage)
+  const coverImageAlt = getMediaAlt(post.coverImage, post.title)
+
   if (!post) {
     notFound()
   }
@@ -119,6 +124,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <ArrowUpLeft className="h-3.5 w-3.5 rotate-180 transition-transform group-hover:translate-y-0.5 group-hover:translate-x-0.5" />
               بازگشت به بلاگ
             </Link>
+
             <div className="mb-6 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
               <span className="border border-border bg-card px-2.5 py-1 text-accent">
                 {post.cat}
@@ -132,7 +138,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {post.read}
               </span>
             </div>
-            <h1 className="text-balance font-display text-4xl font-bold leading-[1.15] tracking-tight md:text-6xl">
+            {coverImage && (
+              <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-sm border border-border bg-muted">
+                <Image
+                  src={coverImage}
+                  alt={coverImageAlt}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 1100px"
+                  className="object-cover"
+                />
+              </div>
+            )}
+            <h1 className="text-balance pt-4 font-display text-4xl font-bold leading-[1.15] tracking-tight md:text-6xl">
               {post.title}
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground md:text-xl">
@@ -141,7 +159,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </header>
 
-        <Section className="!max-w-4xl">
+        {/* <Section className="!max-w-4xl">
           <div className="grid gap-8">
             <TemplateBlock title="خلاصه اجرایی">
               این صفحه قالب مقاله برای محتوای بلاگ است. متن اصلی می‌تواند بعداً به همین آبجکت محتوا
@@ -157,10 +175,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               ساختار برای مقالات AI، RAG، ایجنت‌ها و محصول قابل استفاده است.
             </TemplateBlock>
           </div>
-        </Section>
+        </Section> */}
 
         <Section className="!max-w-4xl">
-          <RichTextRenderer content={post.content} />
+          <MarkdownRenderer content={post.content} />
         </Section>
         {/* NEED UPDATE */}
         {/* <Section className="!max-w-4xl border-t border-border">

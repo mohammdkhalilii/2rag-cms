@@ -7,6 +7,8 @@ import { getPublishedPosts } from '@/app/lib/cms/posts'
 import { site } from '@/app/content/site'
 import { buildMetadata, serializeJsonLd } from '@/app/lib/seo'
 
+import { getMediaAlt, getMediaUrl } from '@/app/lib/cms/media'
+
 export const revalidate = 3600
 
 // Helper to format date as "DD MMM YYYY" (or your preferred format)
@@ -16,14 +18,14 @@ function formatDate(date: Date | string): string {
 }
 
 // Helper to compute reading time (rough estimate)
-function readingTime(content?: string): string {
-  // NEED UPDATE
-  // if (!content) return '1 دقیقه'
-  // const wordsPerMinute = 200
-  // const words = content.trim().split(/\s+/).length
-  // const minutes = Math.ceil(words / wordsPerMinute)
-  // return `${minutes} دقیقه`
-  return '1 دقیقه'
+function readingTime(content?: string | null): string {
+  if (!content) return '۱ دقیقه'
+
+  const wordsPerMinute = 200
+  const words = content.trim().split(/\s+/).filter(Boolean).length
+  const minutes = Math.max(1, Math.ceil(words / wordsPerMinute))
+
+  return `${minutes.toLocaleString('fa-IR')} دقیقه`
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -45,9 +47,12 @@ export default async function BlogPage() {
     slug: post.slug,
     title: post.title,
     excerpt: post.excerpt,
-    cat: post.category?.name || 'عمومی', // adjust according to your Payload schema
+    cat: post.cat || 'عمومی',
     date: formatDate(post.publishedAt || post.createdAt),
     read: readingTime(post.content), // if you store content as rich text, extract plain text first
+
+    coverImage: getMediaUrl(post.coverImage),
+    coverImageAlt: getMediaAlt(post.coverImage, post.title),
   }))
 
   // 3. Determine featured post (e.g. newest or a special "featured" flag)

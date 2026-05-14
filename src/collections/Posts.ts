@@ -80,8 +80,12 @@ export const Posts: CollectionConfig = {
       label: 'Content (Markdown)',
       required: true,
       admin: {
+        description:
+          'Write the blog post in Markdown. Supports headings, links, lists, code blocks, images, and tables.',
         components: {
-          Field: '@/app/components/ui/MarkdownEditor', // adjust path to your component
+          Field: {
+            path: '@/app/components/payload/MarkdownEditor',
+          },
         },
       },
     },
