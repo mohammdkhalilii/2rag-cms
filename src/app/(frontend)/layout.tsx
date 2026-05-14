@@ -1,18 +1,31 @@
-import React from 'react'
-import './styles.css'
+import { Header } from '@/app/components/site/Header'
+import { Footer } from '@/app/components/site/Footer'
+import { site } from '@/app/content/site'
+import { organizationLd, serializeJsonLd, websiteLd } from '@/app/lib/seo'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
-}
+import './globals.css'
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
-
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(organizationLd),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(websiteLd),
+          }}
+        />
+
+        <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )

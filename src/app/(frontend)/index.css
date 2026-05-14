@@ -1,0 +1,41 @@
+/* Fonts Define */
+
+p{
+    font-family: Peyda;
+}
+
+a{
+    font-family: Peyda;
+}
+
+.call-2-action-header{
+    font-family: Rooyin;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+span{
+    font-family: Rooyin;
+}
+
+.font-mono{
+        font-family: Rooyin;
+        direction: rtl;
+        letter-spacing: 0.2px;
+}
+
+.font-normal{
+    font-family: Peyda;
+}
+
+h1{
+    font-family: Rooyin;
+}
+
+h2,h3,h4,h5,h6 ,   div{
+    font-family: Peyda;
+}
+
+.red{
+    color:#ee362f;
+}

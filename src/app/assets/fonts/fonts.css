@@ -1,0 +1,137 @@
+/* PEYDA */
+
+@font-face {
+  font-family: Peyda;
+  src: url("./Peyda/PeydaWeb-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Peyda;
+  src: url("./Peyda/peydaWeb-extralight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Peyda;
+  src: url("./Peyda/peydaWeb-light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Peyda;
+  src: url("./Peyda/PeydaWeb-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Peyda;
+  src: url("./Peyda/PeydaWeb-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Peyda;
+  src: url("./Peyda/PeydaWeb-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Peyda;
+  src: url("./Peyda/PeydaWeb-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Peyda;
+  src: url("./Peyda/PeydaWeb-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: Peyda;
+  src: url("./Peyda/PeydaWeb-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* KALAME */
+
+
+@font-face {
+  font-family: Kalame;
+  src: url("./Kalame/KalamehWeb-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family:Kalame;
+  src: url("./Kalame/KalamehWeb-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family:Kalame;
+  src: url("./Kalame/KalamehWeb-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family:Kalame;
+  src: url("./Kalame/KalamehWeb-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ROOIN */
+@font-face {
+  font-family: Rooyin;
+  src: url("./Rooyin/Rooyin-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-variant: small-caps;
+}
+
+@font-face {
+  font-family: Rooyin;
+  src: url("./Rooyin/Rooyin-Bold.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rooyin;
+  src: url("./Rooyin/Rooyin-RegularDots2.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-variant: normal;
+}
